@@ -8,6 +8,6 @@ def get_vlille():
     return response_json.get("records",[])
 
 data=get_vlille()
-print(type(data))
-dictionay={"name":"gzqgr","io":5}
-print(type(dictionay))
+print(len(data))
+for elem in data :
+    print("Record ID : {} -> {}".format(elem['recordid'],elem['fields']))
