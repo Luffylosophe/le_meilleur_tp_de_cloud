@@ -27,9 +27,9 @@ def putIntoDatabase(db,data):
     posts=db.posts
     post_id=posts.insert_one(data).inserted_id
 
-client=MongoClient('localhost',27017)
-client=MongoClient()
-db=client.database
+client = MongoClient("mongodb+srv://azerty1234:azerty1234@cluster0.7icpc.mongodb.net/<dbname>?retryWrites=true&w=majority")
+db = client.test
+
 
 for elem in records:
     putIntoDatabase(db,elem)
