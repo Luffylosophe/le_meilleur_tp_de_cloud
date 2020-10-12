@@ -7,7 +7,17 @@ def get_vlille():
     response_json=json.loads(response.text.encode("utf8"))
     return response_json.get("records",[])
 
+
+def getSelfServicesBicycleStations(data):
+    records=[]
+    for elem in data:
+        geolocations=elem['fields']['geo']
+        size=elem['fields']['nbvelosdispo']
+        name=elem['fields']['nom']
+        tpe=elem['fields']['type']
+        available=elem['fields']['etat']
+        records.append({"recordid":elem['recordid'],"geolocations":geolocations,"size":size,"name":name,"tpe":tpe,"available":available}) 
+    return records
 data=get_vlille()
-print(len(data))
-for elem in data :
-    print("Record ID : {} -> {}".format(elem['recordid'],elem['fields']))
+records=getSelfServicesBicycleStations(data)
+print(records)
